@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:starwar/model/film.dart';
 
 class ApiService {
@@ -14,4 +15,17 @@ class ApiService {
       throw Exception('Falha ao carregar filmes: $error');
     }
   }
+
+  Future<List<Category>> getCategory() async {
+    try {
+      final response = await _dio.get(_baseUrl);
+      List jsonResponse = response.data;
+      return jsonResponse
+          .map((category) => Category(category))
+          .toList();
+    } catch (error) {
+      throw Exception('Falha ao carregar category: $error');
+    }
+  }
 }
+
