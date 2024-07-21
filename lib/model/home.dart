@@ -44,18 +44,16 @@ class FilmListScreenState extends State<FilmListScreen> {
             child: Column(
               children: [
                 ListTile(
-                  leading: Icon(Icons.arrow_drop_down_circle),
-                  title: const Text('Card title 1'),
-                  subtitle: Text(
-                    'Secondary Text',
-                    style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                  leading: const Icon(Icons.play_circle_fill_outlined),
+                  title: Text(film.title),
+                  subtitle: Text(film.director,
+                    style: TextStyle(color: Colors.white.withOpacity(0.6)),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    'Greyhound divisively hello coldly wonderfully marginally far upon excluding.',
-                    style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                  child: Text(film.openingCrawl,
+                    style: TextStyle(color: Colors.white.withOpacity(0.6)),
                   ),
                 ),
                 // ButtonBar(
@@ -77,8 +75,8 @@ class FilmListScreenState extends State<FilmListScreen> {
                 //     ),
                 //   ],
                 // ),
-                Image.asset('assets/card-sample-image.jpg'),
-                Image.asset('assets/card-sample-image-2.jpg'),
+                Image.network('https://lumiere-a.akamaihd.net/v1/images/image_a89e70e8.jpeg'),
+                Image.network('https://i.pinimg.com/originals/4e/d9/07/4ed90732fb3068f42c3dc8b57a29e986.png'),
               ],
             ),
           );
