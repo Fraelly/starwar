@@ -1,37 +1,43 @@
-// import 'package:flutter/material.dart';
-// import 'package:starwar/api_service.dart';
-// import 'package:starwar/model/film.dart';
+import 'package:flutter/material.dart';
 
-// class CardFilms extends StatefulWidget {
-//   const CardFilms({super.key});
+class CardExample extends StatefulWidget {
+  const CardExample({super.key});
 
-//   @override
-//   State<CardFilms> createState() => _CardFilmsState();
-// }
+  @override
+  State<CardExample> createState() => _CardExampleState();
+}
 
-//   late Future<List<Film>> futureFilms;
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     futureFilms = ApiService().fetchFilms();
-//   }
-
-
-// class _CardFilmsState extends State<CardFilms> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//                   color: Colors.indigo[100],
-//                   margin:const EdgeInsets.all(4.0),
-//                   child: ListTile(
-//                     leading: Image.network('https://m.media-amazon.com/images/I/712phcZ5ljL._AC_UF1000,1000_QL80_.jpg'),
-//                     title: Text(film.title),
-//                     subtitle: Text('Episode ${film.episodeId}'),
-//                     onTap: () {
-//                       // Navegar para os detalhes do filme
-//                     },
-//                   ),
-//                 );
-//   }
-// }
+class _CardExampleState extends State<CardExample> {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Card(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            const ListTile(
+              leading: Icon(Icons.album),
+              title: Text(film.title),
+              subtitle: Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                TextButton(
+                  child: const Text('BUY TICKETS'),
+                  onPressed: () {/* ... */},
+                ),
+                const SizedBox(width: 8),
+                TextButton(
+                  child: const Text('LISTEN'),
+                  onPressed: () {/* ... */},
+                ),
+                const SizedBox(width: 8),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

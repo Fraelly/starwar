@@ -10,14 +10,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Column(
-        children: [
-          FilmListScreen(),
-        ],
-      ) ,
-      
-      );
+    return MaterialApp(
+      title: 'StarWars',
+      theme: ThemeData.dark(useMaterial3:true),
+      home: const FilmListScreen(),
+    );
   }
 }
-
