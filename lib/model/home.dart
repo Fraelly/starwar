@@ -40,46 +40,102 @@ class FilmListScreenState extends State<FilmListScreen> {
               itemBuilder: (context, index) {
                 final film = snapshot.data![index];
                 return Card(
-            clipBehavior: Clip.antiAlias,
-            child: Column(
-              children: [
-                ListTile(
-                  leading: const Icon(Icons.play_circle_fill_outlined),
-                  title: Text(film.title),
-                  subtitle: Text(film.director,
-                    style: TextStyle(color: Colors.white.withOpacity(0.6)),
+                  clipBehavior: Clip.antiAlias,
+                  child: Column(
+                    children: [
+                      ListTile(
+                        leading: const Icon(Icons.play_circle_fill_outlined),
+                        title: Text(film.title),
+                        subtitle: Text(
+                          film.director,
+                          style:
+                              TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white.withOpacity(0.6)),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: Text(
+                            film.openingCrawl,
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+
+                              color: Colors.white.withOpacity(0.6),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Container(
+                            alignment: Alignment.center,
+                            width: 120,
+                            height: 80,
+                            decoration: BoxDecoration(
+                                color: Colors.black12,
+                                borderRadius: BorderRadius.circular(10.0)),
+                            child: Text(
+                              'Producer \n ${film.producer}',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          Container(
+                            alignment: Alignment.center,
+                            height: 80,
+                            width: 120,
+                            decoration: BoxDecoration(
+                                color: Colors.black12,
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Text(
+                              'Director \n ${film.director}',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          Container(
+                            alignment: Alignment.center,
+                            height: 80,
+                            width: 120,
+                            decoration: BoxDecoration(
+                                color: Colors.black12,
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Text(
+                              'Data \n ${film.releaseDate}',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 16.0),
+                      // ButtonBar(
+                      //   alignment: MainAxisAlignment.start,
+                      //   children: [
+                      //     FlatButton(
+                      //       textColor: const Color(0xFF6200EE),
+                      //       onPressed: () {
+                      //         // Perform some action
+                      //       },
+                      //       child: const Text('ACTION 1'),
+                      //     ),
+                      //     FlatButton(
+                      //       textColor: const Color(0xFF6200EE),
+                      //       onPressed: () {
+                      //         // Perform some action
+                      //       },
+                      //       child: const Text('ACTION 2'),
+                      //     ),
+                      //   ],
+                      // ),
+                      Image.network(
+                          'https://lumiere-a.akamaihd.net/v1/images/image_a89e70e8.jpeg'),
+                      Image.network(
+                          'https://i.pinimg.com/originals/4e/d9/07/4ed90732fb3068f42c3dc8b57a29e986.png'),
+                    ],
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text(film.openingCrawl,
-                    style: TextStyle(color: Colors.white.withOpacity(0.6)),
-                  ),
-                ),
-                // ButtonBar(
-                //   alignment: MainAxisAlignment.start,
-                //   children: [
-                //     FlatButton(
-                //       textColor: const Color(0xFF6200EE),
-                //       onPressed: () {
-                //         // Perform some action
-                //       },
-                //       child: const Text('ACTION 1'),
-                //     ),
-                //     FlatButton(
-                //       textColor: const Color(0xFF6200EE),
-                //       onPressed: () {
-                //         // Perform some action
-                //       },
-                //       child: const Text('ACTION 2'),
-                //     ),
-                //   ],
-                // ),
-                Image.network('https://lumiere-a.akamaihd.net/v1/images/image_a89e70e8.jpeg'),
-                Image.network('https://i.pinimg.com/originals/4e/d9/07/4ed90732fb3068f42c3dc8b57a29e986.png'),
-              ],
-            ),
-          );
+                );
               },
             );
           }
