@@ -12,8 +12,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'StarWars',
-      theme: ThemeData.dark(useMaterial3:true),
-      home: const FilmListScreen(),
+      theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.black38),
+          useMaterial3: true),
+      initialRoute: '/home',
+      routes: {
+        '/home': (_) => const FilmListScreen(),
+        // '/discricao': (_) => const Discricao(),
+      },
     );
   }
 }
