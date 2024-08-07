@@ -17,7 +17,7 @@ class _CardExampleState extends State<CardExample> {
           children: <Widget>[
             const ListTile(
               leading: Icon(Icons.album),
-              title: Text(film.title),
+              // title: Text(film.title),
               subtitle: Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
             ),
             Row(

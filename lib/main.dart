@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:starwar/model/home.dart';
+import 'package:starwar/view/widgets/detail_person.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,10 +16,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.black38),
           useMaterial3: true),
-      initialRoute: '/home',
+      initialRoute: '/detail',
       routes: {
         '/home': (_) => const FilmListScreen(),
-        // '/discricao': (_) => const Discricao(),
+        '/detail': (_) => const DetailPerson(),
       },
     );
   }
