@@ -11,15 +11,14 @@ void main() {
 
 // Fetch content from the json file
         Future<void> readJson() async {
-          final String response = await rootBundle.loadString("data_json.json");
+          final String response =
+              await rootBundle.loadString("assets/data_json.json");
           final data = await json.decode(response);
 
           // setState(() {
           //   person = data["name"];
           // });
-          return print(data);
+          print(data);
         }
-
-        readJson();
       } as Function());
 }

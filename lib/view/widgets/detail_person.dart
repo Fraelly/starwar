@@ -1,25 +1,24 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter/services.dart';
 
 class DetailPerson extends StatefulWidget {
   const DetailPerson({super.key});
 
   @override
-  State<DetailPerson> createState() => _DetailPersonState();
+  DetailPersonState createState() => DetailPersonState();
 }
 
-class _DetailPersonState extends State<DetailPerson> {
-  List person = [];
+class DetailPersonState extends State<DetailPerson> {
+  List _person = [];
 
 // Fetch content from the json file
   Future<void> readJson() async {
-    final String response =
-        await rootBundle.loadString("assets/data_json.json");
+    final String response = await rootBundle.loadString('assets/data.json');
     final data = await json.decode(response);
     setState(() {
-      person = data;
+      _person = data["person"];
     });
   }
 
@@ -27,36 +26,39 @@ class _DetailPersonState extends State<DetailPerson> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Detail Person'),
+        backgroundColor: Theme.of(context).primaryColor,
+        title: const Text(
+          'Person Detail',
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(25),
         child: Column(
           children: [
-            Text(person[1]['name']),
             // ElevatedButton(
             //   onPressed: readJson,
             //   child: const Text('Load Data'),
             // ),
 
             // Display the data loaded from sample.json
-            person.isNotEmpty
-                ? Expanded(
-                    child: ListView.builder(
-                      itemCount: person.length,
-                      itemBuilder: (context, index) {
-                        return Card(
-                          margin: const EdgeInsets.all(10),
-                          child: ListTile(
-                            leading: Text(person[index]["id"]),
-                            title: Text(person[index]["name"]),
-                            subtitle: Text(person[index]["species"]),
-                          ),
-                        );
-                      },
+            // _person.isNotEmpty
+            // ?
+            Expanded(
+              child: ListView.builder(
+                itemCount: _person.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    margin: const EdgeInsets.all(10),
+                    child: ListTile(
+                      leading: Text(_person[index]["name"]),
+                      title: Text(_person[index]["name"]),
+                      subtitle: Text(_person[index]["species"]),
                     ),
-                  )
-                : Container()
+                  );
+                },
+              ),
+            )
+            // : Container()
           ],
         ),
       ),
