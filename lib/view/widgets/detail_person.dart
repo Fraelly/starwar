@@ -1,6 +1,5 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:starwar/repository/api_data_json.dart';
 
 class DetailPerson extends StatefulWidget {
   const DetailPerson({super.key});
@@ -11,19 +10,19 @@ class DetailPerson extends StatefulWidget {
 
 class DetailPersonState extends State<DetailPerson> {
   List _person = [];
+  final JsonService _jsonService = JsonService(); // Instancia de PersonJson
 
   @override
   void initState() {
     super.initState();
-    readJson(); // Carrega os dados automaticamente ao inicializar o widget
+    loadPersonData(); // Carrega os dados automaticamente ao inicializar o widget
   }
 
-  // Fetch content from the json file
-  Future<void> readJson() async {
-    final String response = await rootBundle.loadString('assets/data.json');
-    final data = await json.decode(response);
+  // // Fetch content from the json file
+  Future<void> loadPersonData() async {
+    final data = await _jsonService.readJson();
     setState(() {
-      _person = data["person"];
+      _person = data;
     });
   }
 
@@ -44,9 +43,12 @@ class DetailPersonState extends State<DetailPerson> {
                   itemCount: _person.length,
                   itemBuilder: (context, index) {
                     return Card(
-                      margin: const EdgeInsets.all(10),
+                      margin: const EdgeInsets.all(5.0),
                       child: ListTile(
-                        leading: Text(_person[index]["name"]),
+                        leading: CircleAvatar(
+                          backgroundImage:
+                              NetworkImage(_person[index]["image"]),
+                        ),
                         title: Text(_person[index]["name"]),
                         subtitle: Text(_person[index]["species"]),
                       ),
