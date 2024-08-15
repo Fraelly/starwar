@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:starwar/model/home.dart';
 import 'package:starwar/my_thema.dart';
 import 'package:starwar/view/widgets/detail_person.dart';
+import 'package:starwar/view/widgets/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,9 +15,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'StarWars',
       theme: myTheme,
-      initialRoute: '/detail',
+      initialRoute: '/home',
       routes: {
-        '/home': (_) => const FilmListScreen(),
+        '/home': (_) => const Home(),
+        // '/home': (_) => const FilmListScreen(),
         '/detail': (_) => const DetailPerson(),
         // '/thema': (_) => ThemaPersonalizado(),
       },

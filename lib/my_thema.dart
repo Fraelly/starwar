@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 // Definindo as cores
-const Color backgroundColor = Color(0xFFD9D9D9); //60
+//60
+const Color backgroundColor = Colors.white; //60
 const Color primaryColor = Color(0xFF00315C); //30
 const Color accentColor = Color(0xFFBDDB39); //10
 

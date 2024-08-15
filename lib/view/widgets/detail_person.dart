@@ -36,7 +36,7 @@ class DetailPersonState extends State<DetailPerson> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(25),
+        padding: const EdgeInsets.all(16.0),
         child: _person.isNotEmpty
             ? Expanded(
                 child: ListView.builder(
