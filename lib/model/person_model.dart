@@ -122,29 +122,29 @@ class Person {
     };
   }
 
-  factory Person.fromMap(Map<String, dynamic> map) {
+  factory Person.fromMap(Map<String, dynamic> json) {
     return Person(
-      id: map['id']?.toInt() ?? 0,
-      name: map['name'] ?? '',
-      height: map['height']?.toDouble() ?? 0.0,
-      mass: map['mass']?.toInt() ?? 0,
-      gender: map['gender'] ?? '',
-      homeworld: map['homeworld'] ?? '',
-      wiki: map['wiki'] ?? '',
-      image: map['image'] ?? '',
-      born: map['born']?.toInt() ?? 0,
-      bornLocation: map['bornLocation'] ?? '',
-      died: map['died']?.toInt() ?? 0,
-      diedLocation: map['diedLocation'] ?? '',
-      species: map['species'] ?? '',
-      hairColor: map['hairColor'] ?? '',
-      eyeColor: map['eyeColor'] ?? '',
-      skinColor: map['skinColor'] ?? '',
-      cybernetics: map['cybernetics'] ?? '',
-      affiliations: List<String>.from(map['affiliations']),
-      masters: List<String>.from(map['masters']),
-      apprentices: List<String>.from(map['apprentices']),
-      formerAffiliations: List<dynamic>.from(map['formerAffiliations']),
+      id: json['id']?.toInt() ?? 0,
+      name: json['name'] ?? '',
+      height: json['height']?.toDouble() ?? 0.0,
+      mass: json['mass']?.toInt() ?? 0,
+      gender: json['gender'] ?? '',
+      homeworld: json['homeworld'] ?? '',
+      wiki: json['wiki'] ?? '',
+      image: json['image'] ?? '',
+      born: json['born']?.toInt() ?? 0,
+      bornLocation: json['bornLocation'] ?? '',
+      died: json['died']?.toInt() ?? 0,
+      diedLocation: json['diedLocation'] ?? '',
+      species: json['species'] ?? '',
+      hairColor: json['hairColor'] ?? '',
+      eyeColor: json['eyeColor'] ?? '',
+      skinColor: json['skinColor'] ?? '',
+      cybernetics: json['cybernetics'] ?? '',
+      affiliations: List<String>.from(json['affiliations']),
+      masters: List<String>.from(json['masters']),
+      apprentices: List<String>.from(json['apprentices']),
+      formerAffiliations: List<dynamic>.from(json['formerAffiliations']),
     );
   }
 

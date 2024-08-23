@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
-import 'package:starwar/model/film.dart';
+import '../model/film.dart';
+import '../model/person_model.dart';
 
 class ApiService {
   final Dio _dio = Dio();
@@ -16,16 +16,13 @@ class ApiService {
     }
   }
 
-  Future<List<Category>> getCategory() async {
+  Future<List<Person>> fetchPerson() async {
     try {
-      final response = await _dio.get(_baseUrl);
-      List jsonResponse = response.data;
-      return jsonResponse
-          .map((category) => Category(category))
-          .toList();
+      final response = await _dio.get('$_baseUrl/people/');
+      List jsonResponse = response.data['results'];
+      return jsonResponse.map((item) => Person.fromJson(item)).toList();
     } catch (error) {
-      throw Exception('Falha ao carregar category: $error');
+      throw Exception('Falha ao carregar Personagem: $error');
     }
   }
 }
-
